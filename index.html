@@ -40,10 +40,23 @@
           ]
         });
 
+
+            function reverseText(text) {
+                if(!text) {
+                    console.log('fragment was null');
+                    return null;
+                } else if(text ==='') {
+                    console.log('fragment was empty string');
+                    return text;
+                }
+                console.log ('fragment is ' + text);
+                text.reverse();
+                return text;   
+            }
         createExample('Reverse Text', {
           description: 'Create a function that reverses the characters in \
             a string',
-          implementation: null,
+          implementation: reverseText,
           validation: [
             {
               input: 'test value',
