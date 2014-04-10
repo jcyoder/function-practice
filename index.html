@@ -42,16 +42,17 @@
 
 
             function reverseText(text) {
-                if(!text) {
-                    console.log('fragment was null');
-                    return null;
-                } else if(text ==='') {
-                    console.log('fragment was empty string');
-                    return text;
+                //return null if empty
+                if(text === null) {
+                 return null;
                 }
-                console.log ('fragment is ' + text);
-                text.reverse();
-                return text;   
+                //make an empty string
+                var reversed = '';   
+                //loop backwards over text
+                for(var index = text.length-1; index >=0; index--) {
+                    reversed += text[index];
+                }
+                return reversed;
             }
         createExample('Reverse Text', {
           description: 'Create a function that reverses the characters in \
