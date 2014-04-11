@@ -160,7 +160,7 @@
             
             return money;
         }
-                
+            
         createExample('Tender Change', {
           description: 'Write a function that given a dollar amount returns \
             the change in bills and coins. For instance, given \
@@ -179,6 +179,30 @@
             {
               input: 27.27,
               output: { hundreds: 0, fifties: 0, twenties: 1, tens: 0, fives: 1, ones: 2, quarters: 1, dimes: 0, nickels: 0, pennies: 2 }
+            },
+            {
+              input: 36.78,
+              output: { hundreds: 0, fifties: 0, twenties: 1, tens: 1, fives: 1, ones: 1, quarters: 3, dimes: 0, nickels: 0, pennies: 3 }
+            },
+            {
+              input: 45.08,
+              output: { hundreds: 0, fifties: 0, twenties: 2, tens: 0, fives: 1, ones: 0, quarters: 0, dimes: 0, nickels: 1, pennies: 3 }
+            },
+            {
+              input: 50.65,
+              output: { hundreds: 0, fifties: 1, twenties: 0, tens: 0, fives: 0, ones: 0, quarters: 2, dimes: 1, nickels: 1, pennies: 0 }
+            },
+            {
+              input: 0.00,
+              output: { hundreds: 0, fifties: 0, twenties: 0, tens: 0, fives: 0, ones: 0, quarters: 0, dimes: 0, nickels: 0, pennies: 0 }
+            },
+            {
+              input: 97.81,
+              output: { hundreds: 0, fifties: 1, twenties: 2, tens: 0, fives: 1, ones: 2, quarters: 3, dimes: 0, nickels: 1, pennies: 1 }
+            },
+            {
+              input: 100.00,
+              output: { hundreds: 1, fifties: 0, twenties: 0, tens: 0, fives: 0, ones: 0, quarters: 0, dimes: 0, nickels: 0, pennies: 0 }
             }
           ]
         });
