@@ -93,19 +93,18 @@
                 {name: 'pennies', value: 1},
             ];
                 
-         /*   var money =  [
-                {'hundreds: ',  0},
-                {'fifties: ',  0},
-                {'twenties: ',  0},
-                {'tens: ',  0},
-                {'fives: ',  0},
-                {'ones: ',  0},
-                {'quarters: ', 0},
-                {'dimes: ',  0},
-                {'nickels: ', 0},
-                {'pennies: ', 0},
-            ];
-        */ 
+           var money =  { 
+                hundreds: 0,
+                fifties: 0,
+                twenties:  0,
+                tens:  0,
+                fives: 0,
+                ones: 0,
+                quarters: 0,
+                dimes: 0,
+                nickels: 0,
+                pennies: 0};
+         
         
             var hundredcount =0;
             var fiftycount =0;
@@ -123,52 +122,52 @@
                 while (changeNeeded >=denominators[index].value) {
                     switch( denominators[index].value){
                         case 10000:
-                           /* money[index].value += 1;*/
+                            money.hundreds += 1;
                             hundredcount++;
                             changeNeeded -= denominators[index].value;
                             break;
                         case 5000:
-                            /*money[index].value += 1;*/
+                            money.fifties += 1;
                             fiftycount++;
                             changeNeeded -= denominators[index].value;
                             break;
                          case 2000:
-                           /* money[index].value += 1;*/
+                            money.twenties += 1;
                             twentycount++;
                             changeNeeded -= denominators[index].value;
                             break;   
                         case 1000:
-                           /* money[index].value += 1;*/
+                            money.tens += 1;
                             tencount++;
                             changeNeeded -= denominators[index].value;
                             break;
                         case 500:
-                          /* money[index].value += 1;*/
+                            money.fives += 1;
                             fivecount++;
                             changeNeeded -= denominators[index].value;
                             break;
                         case 100:
-                           /* money[index].value += 1;*/
+                           money.ones += 1;
                             onecount++;
                             changeNeeded -= denominators[index].value;
                             break;
                         case 25:
-                            /*money[index].value += 1;*/
+                            money.quarters += 1;
                             quartercount++;
                             changeNeeded -= denominators[index].value;
                             break;
                         case 10:
-                            /*money[index].value += 1;*/
+                            money.dimes +=1;
                             dimecount++;
                             changeNeeded -= denominators[index].value;
                             break;
                         case 5:
-                            /*money[index].value += 1;*/
+                            money.nickels += 1;
                             nickelcount++;
                             changeNeeded -= denominators[index].value;
                             break;
                         case 1:
-                           /* money[index].value += 1;*/
+                           money.pennies +=1;
                             pennycount++;
                             changeNeeded -= denominators[index].value;
                             break;
@@ -193,7 +192,15 @@
           validation: [
             {
               input: 7.23,
-              output: { hundreds: 0, fifties: 0, twenties: 0, tens: 0, fives: 1, ones: 2, dimes: 2, nickels: 0, pennies: 3 }
+              output: { hundreds: 0, fifties: 0, twenties: 0, tens: 0, fives: 1, ones: 2, quarters: 0, dimes: 2, nickels: 0, pennies: 3 }
+            },
+            {
+              input: 17.23,
+              output: { hundreds: 0, fifties: 0, twenties: 0, tens: 1, fives: 1, ones: 2, quarters: 0, dimes: 2, nickels: 0, pennies: 3 }
+            },
+            {
+              input: 27.27,
+              output: { hundreds: 0, fifties: 0, twenties: 1, tens: 0, fives: 1, ones: 2, quarters: 1, dimes: 0, nickels: 0, pennies: 2 }
             }
           ]
         });
