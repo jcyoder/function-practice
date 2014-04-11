@@ -106,69 +106,48 @@
                 pennies: 0};
          
         
-            var hundredcount =0;
-            var fiftycount =0;
-            var twentycount = 0;
-            var tencount = 0;
-            var fivecount = 0;
-            var onecount = 0;
-            var quartercount = 0;
-            var dimecount = 0;
-            var nickelcount = 0;
-            var pennycount = 0;
-           
             //find a starting point
             for ( var index = 0; index < denominators.length; index++) {
                 while (changeNeeded >=denominators[index].value) {
                     switch( denominators[index].value){
                         case 10000:
-                            money.hundreds += 1;
-                            hundredcount++;
+                            money.hundreds++;
                             changeNeeded -= denominators[index].value;
                             break;
                         case 5000:
-                            money.fifties += 1;
-                            fiftycount++;
+                            money.fifties++;
                             changeNeeded -= denominators[index].value;
                             break;
                          case 2000:
-                            money.twenties += 1;
-                            twentycount++;
+                            money.twenties++;
                             changeNeeded -= denominators[index].value;
                             break;   
                         case 1000:
-                            money.tens += 1;
-                            tencount++;
+                            money.tens++;
                             changeNeeded -= denominators[index].value;
                             break;
                         case 500:
-                            money.fives += 1;
-                            fivecount++;
+                            money.fives++;
                             changeNeeded -= denominators[index].value;
                             break;
                         case 100:
-                           money.ones += 1;
-                            onecount++;
+                           money.ones++;
                             changeNeeded -= denominators[index].value;
                             break;
                         case 25:
-                            money.quarters += 1;
-                            quartercount++;
+                            money.quarters++;
                             changeNeeded -= denominators[index].value;
                             break;
                         case 10:
-                            money.dimes +=1;
-                            dimecount++;
+                            money.dimes++;
                             changeNeeded -= denominators[index].value;
                             break;
                         case 5:
-                            money.nickels += 1;
-                            nickelcount++;
+                            money.nickels++;
                             changeNeeded -= denominators[index].value;
                             break;
                         case 1:
-                           money.pennies +=1;
-                            pennycount++;
+                            money.pennies++;
                             changeNeeded -= denominators[index].value;
                             break;
                         default:
@@ -178,7 +157,6 @@
                     
                 }
             }
-            console.log('hundreds: ' + hundredcount + ' fifties: ' + fiftycount + ' twenties: ' + twentycount + ' tens: ' + tencount + ' fives: ' + fivecount + ' ones: ' + onecount + ' quarters: ' + quartercount + ' dimes: ' + dimecount + ' nickels: ' + nickelcount  + ' pennies: ' + pennycount);
             
             return money;
         }
