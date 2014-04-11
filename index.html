@@ -106,55 +106,46 @@
                 pennies: 0};
          
         
-            //find a starting point
+            //loop through denominations, and figure out how many of each we have
             for ( var index = 0; index < denominators.length; index++) {
                 while (changeNeeded >=denominators[index].value) {
+                    //count the denomination - increment the count
                     switch( denominators[index].value){
                         case 10000:
                             money.hundreds++;
-                            changeNeeded -= denominators[index].value;
                             break;
                         case 5000:
                             money.fifties++;
-                            changeNeeded -= denominators[index].value;
                             break;
                          case 2000:
                             money.twenties++;
-                            changeNeeded -= denominators[index].value;
                             break;   
                         case 1000:
                             money.tens++;
-                            changeNeeded -= denominators[index].value;
                             break;
                         case 500:
                             money.fives++;
-                            changeNeeded -= denominators[index].value;
                             break;
                         case 100:
                            money.ones++;
-                            changeNeeded -= denominators[index].value;
                             break;
                         case 25:
                             money.quarters++;
-                            changeNeeded -= denominators[index].value;
                             break;
                         case 10:
                             money.dimes++;
-                            changeNeeded -= denominators[index].value;
                             break;
                         case 5:
                             money.nickels++;
-                            changeNeeded -= denominators[index].value;
                             break;
                         case 1:
                             money.pennies++;
-                            changeNeeded -= denominators[index].value;
                             break;
                         default:
                             break;
                         
                     }
-                    
+                    changeNeeded -= denominators[index].value;
                 }
             }
             
