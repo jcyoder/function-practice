@@ -74,16 +74,126 @@
           ]
         });
 
+        function tenderChange(change) {
+            //input is the change needed
+            
+            // multiply the change by 100 to have the value in pennies
+            var changeNeeded = change * 100;
+            var money = 0;
+            var denominators = [
+                {name: 'hundred', value: 10000},
+                {name:  'fifty', value: 5000},
+                {name:  'twenty', value: 2000},
+                {name:  'ten', value: 1000},
+                {name:  'five', value: 500},
+                {name:  'one', value: 100},
+                {name: 'quarter', value: 25},
+                {name: 'dime', value: 10},
+                {name: 'nickels', value: 5},
+                {name: 'pennies', value: 1},
+            ];
+                
+         /*   var money =  [
+                {'hundreds: ',  0},
+                {'fifties: ',  0},
+                {'twenties: ',  0},
+                {'tens: ',  0},
+                {'fives: ',  0},
+                {'ones: ',  0},
+                {'quarters: ', 0},
+                {'dimes: ',  0},
+                {'nickels: ', 0},
+                {'pennies: ', 0},
+            ];
+        */ 
+        
+            var hundredcount =0;
+            var fiftycount =0;
+            var twentycount = 0;
+            var tencount = 0;
+            var fivecount = 0;
+            var onecount = 0;
+            var quartercount = 0;
+            var dimecount = 0;
+            var nickelcount = 0;
+            var pennycount = 0;
+           
+            //find a starting point
+            for ( var index = 0; index < denominators.length; index++) {
+                while (changeNeeded >=denominators[index].value) {
+                    switch( denominators[index].value){
+                        case 10000:
+                           /* money[index].value += 1;*/
+                            hundredcount++;
+                            changeNeeded -= denominators[index].value;
+                            break;
+                        case 5000:
+                            /*money[index].value += 1;*/
+                            fiftycount++;
+                            changeNeeded -= denominators[index].value;
+                            break;
+                         case 2000:
+                           /* money[index].value += 1;*/
+                            twentycount++;
+                            changeNeeded -= denominators[index].value;
+                            break;   
+                        case 1000:
+                           /* money[index].value += 1;*/
+                            tencount++;
+                            changeNeeded -= denominators[index].value;
+                            break;
+                        case 500:
+                          /* money[index].value += 1;*/
+                            fivecount++;
+                            changeNeeded -= denominators[index].value;
+                            break;
+                        case 100:
+                           /* money[index].value += 1;*/
+                            onecount++;
+                            changeNeeded -= denominators[index].value;
+                            break;
+                        case 25:
+                            /*money[index].value += 1;*/
+                            quartercount++;
+                            changeNeeded -= denominators[index].value;
+                            break;
+                        case 10:
+                            /*money[index].value += 1;*/
+                            dimecount++;
+                            changeNeeded -= denominators[index].value;
+                            break;
+                        case 5:
+                            /*money[index].value += 1;*/
+                            nickelcount++;
+                            changeNeeded -= denominators[index].value;
+                            break;
+                        case 1:
+                           /* money[index].value += 1;*/
+                            pennycount++;
+                            changeNeeded -= denominators[index].value;
+                            break;
+                        default:
+                            break;
+                        
+                    }
+                    
+                }
+            }
+            console.log('hundreds: ' + hundredcount + ' fifties: ' + fiftycount + ' twenties: ' + twentycount + ' tens: ' + tencount + ' fives: ' + fivecount + ' ones: ' + onecount + ' quarters: ' + quartercount + ' dimes: ' + dimecount + ' nickels: ' + nickelcount  + ' pennies: ' + pennycount);
+            
+            return money;
+        }
+                
         createExample('Tender Change', {
           description: 'Write a function that given a dollar amount returns \
             the change in bills and coins. For instance, given \
             <code>7.23</code> it should return: \
             <pre>{ fives: 1, ones: 2, dimes: 2, pennies: 3 }</pre>',
-          implementation: null,
+          implementation: tenderChange,
           validation: [
             {
               input: 7.23,
-              output: { fives: 1, ones: 2, dimes: 2, pennies: 5 }
+              output: { hundreds: 0, fifties: 0, twenties: 0, tens: 0, fives: 1, ones: 2, dimes: 2, nickels: 0, pennies: 3 }
             }
           ]
         });
