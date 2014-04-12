@@ -202,6 +202,8 @@
             var result = '';
             var special = {};
             var yNouns = {};
+            var temp = noun.toLowerCase();
+            noun = temp;
             if( number === 0 ) {
                 result = 'There is not a single ' +  noun + '.';
             }else if ( number === 1 ) {
@@ -213,12 +215,11 @@
                 yNouns = checkForYNouns(noun);
                 if (yNouns.Yes) {
                  result = number + ' ' + yNouns.newNoun;   
-                } else {
+                } else {  //noun does not end in y so continue and look for special nouns
                     special = checkForSpecials(noun);
-                    console.log( special);
                     if(special.pluralnoun) {
                            result =  number + ' ' + special.pluralnoun;
-                    } else {
+                    } else { //not a special noun so just add an s at the end
                       
                         result = number + ' ' + noun + 's';
                     }
@@ -231,21 +232,24 @@
         
         function checkForYNouns(noun) {
             var yNouns = { Yes: 0,
-                           newNoun: 'help'};
-            
+                           newNoun: ''};
+            var tempnoun = noun;
+            var removeY = '';
+            console.log(tempnoun);
             if (noun[noun.length-1] === 'y') {
-                if( (noun[noun.length-2] !== 'a') &&
-                    (noun[noun.lenght-2] !== 'e') &&
-                   (noun[noun.lenght-2] !== 'i') &&
-                   (noun[noun.lenght-2] !== 'o') &&
-                   (noun[noun.lenght-2] !== 'u')  ) {
-                    
-                    yNouns.Yes = 1;
-                    yNouns.newNoun = noun;
-                    yNouns.newNoun[newNoun.length-1] = 'i';
-                    yNouns.newNoun += 'es';
-                    console.log(yNouns);
-                    
+                
+                if ( (noun[noun.length-2] !== 'a') && (noun[noun.length-2] !== 'e') &&  
+                     (noun[noun.length-2] !== 'i') && (noun[noun.length-2] !== 'o') &&
+                     (noun[noun.length-2] !== 'u') ) {
+                        console.log ('we need to replace y with ies');     
+                        yNouns.Yes = 1;
+                        //for some reason the following line does not work.  Try a different way.
+                      //  tempnoun[tempnoun.length-1] = 'i';
+                        removeY = tempnoun.slice(0, (noun.length-1) );
+                        yNouns.newNoun = removeY;
+                        yNouns.newNoun += 'ies';
+                        console.log(yNouns);
+                         
                 }
             }
             return yNouns;
@@ -305,7 +309,7 @@
               output: '1 dog'
             },
             {
-              input: ['cat', 5],
+              input: ['Cat', 5],
               output: '5 cats'
             },
             {
@@ -317,7 +321,7 @@
               output: 'Invalid number input'
             },
             {
-              input: ['mouse', 3],
+              input: ['Mouse', 3],
               output: '3 mice'
             },
             {
@@ -369,13 +373,9 @@
               output: '2 birds'
             }, 
             {
-              input: ['bird', 'a'],
-              output: 'Invalid number input'
-            }, 
-            {
               input: ['fly', 2],
               output: '2 flies'
-            }, 
+            } 
             
           ]
         });
