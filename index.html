@@ -200,16 +200,99 @@
 
         function pluralizer( noun, number) {
             var result = '';
+            var special = {};
+            var yNouns = {};
             if( number === 0 ) {
                 result = 'There is not a single ' +  noun + '.';
-            }else if (number === 1) {
+            }else if ( number === 1 ) {
                 result = '1 ' + noun; 
                 
             }else if ( number < 0 ) {
                 result = 'Invalid number input';   
+            } else {
+                yNouns = checkForYNouns(noun);
+                if (yNouns.Yes) {
+                 result = number + ' ' + yNouns.newNoun;   
+                } else {
+                    special = checkForSpecials(noun);
+                    console.log( special);
+                    if(special.pluralnoun) {
+                           result =  number + ' ' + special.pluralnoun;
+                    } else {
+                      
+                        result = number + ' ' + noun + 's';
+                    }
+                }
+                
             }
             
             return result;
+        }
+        
+        function checkForYNouns(noun) {
+            var yNouns = { Yes: 0,
+                           newNoun: 'help'};
+            
+            if (noun[noun.length-1] === 'y') {
+                if( (noun[noun.length-2] !== 'a') &&
+                    (noun[noun.lenght-2] !== 'e') &&
+                   (noun[noun.lenght-2] !== 'i') &&
+                   (noun[noun.lenght-2] !== 'o') &&
+                   (noun[noun.lenght-2] !== 'u')  ) {
+                    
+                    yNouns.Yes = 1;
+                    yNouns.newNoun = noun;
+                    yNouns.newNoun[newNoun.length-1] = 'i';
+                    yNouns.newNoun += 'es';
+                    console.log(yNouns);
+                    
+                }
+            }
+            return yNouns;
+        }
+        
+        function checkForSpecials(noun) {
+            var specnoun = {special: 0,
+                           pluralnoun: ''};
+            
+            switch(noun) {
+                case 'mouse':
+                    specnoun.special = 1;
+                    specnoun.pluralnoun = 'mice';
+                    break;
+                case 'goose':
+                    specnoun.special = 1;
+                    specnoun.pluralnoun = 'geese';
+                    break;
+                case 'ox':
+                    specnoun.special = 1;
+                    specnoun.pluralnoun = 'oxen';
+                    break;
+                case 'bison':
+                    specnoun.special = 1;
+                    specnoun.pluralnoun = 'bison';
+                    break;
+                case 'deer':
+                    specnoun.special = 1;
+                    specnoun.pluralnoun = 'deer';
+                    break;
+                case 'moose':
+                    specnoun.special = 1;
+                    specnoun.pluralnoun = 'moose';
+                    break;
+                case 'salmon':
+                    specnoun.special = 1;
+                    specnoun.pluralnoun = 'salmon';
+                    break;
+                case 'sheep':
+                    specnoun.special = 1;
+                    specnoun.pluralnoun = 'sheep';
+                    break;
+                default:
+                    break;
+            }
+            
+            return specnoun;
         }
         createExample('The Pluralizer', {
           description: 'Write a function that takes two arguments, a noun \
@@ -271,7 +354,7 @@
             },
             {
               input: ['salmon', 3],
-              output: '3 salmon(s)'
+              output: '3 salmon'
             },
             {
               input: ['monkey', 1],
@@ -288,6 +371,10 @@
             {
               input: ['bird', 'a'],
               output: 'Invalid number input'
+            }, 
+            {
+              input: ['fly', 2],
+              output: '2 flies'
             }, 
             
           ]
