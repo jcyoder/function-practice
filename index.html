@@ -202,6 +202,11 @@
             var result = '';
             if( number === 0 ) {
                 result = 'There is not a single ' +  noun + '.';
+            }else if (number === 1) {
+                result = '1 ' + noun; 
+                
+            }else if ( number < 0 ) {
+                result = 'Invalid number input';   
             }
             
             return result;
@@ -226,7 +231,7 @@
             },
             {
               input: ['tiger', -1],
-              output: 'invalid input'
+              output: 'Invalid number input'
             },
             {
               input: ['mouse', 3],
@@ -279,7 +284,11 @@
             {
               input: ['bird', 2],
               output: '2 birds'
-            },   
+            }, 
+            {
+              input: ['bird', 'a'],
+              output: 'Invalid number input'
+            }, 
             
           ]
         });
