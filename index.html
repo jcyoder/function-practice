@@ -198,11 +198,19 @@
           ]
         });
 
+        function pluralizer( noun, number) {
+            var result = '';
+            if( number === 0 ) {
+                result = 'There is not a single ' +  noun + '.';
+            }
+            
+            return result;
+        }
         createExample('The Pluralizer', {
           description: 'Write a function that takes two arguments, a noun \
             and a number, and returns the number and the noun in pluralized \
             form (for instance, "1 dog", "5 cats")',
-          implementation: null,
+          implementation: pluralizer,
           validation: [
             {
               input: ['dog', 1],
@@ -211,7 +219,68 @@
             {
               input: ['cat', 5],
               output: '5 cats'
-            }
+            },
+            {
+              input: ['elephant', 0],
+              output: 'There is not a single elephant.'
+            },
+            {
+              input: ['tiger', -1],
+              output: 'invalid input'
+            },
+            {
+              input: ['mouse', 3],
+              output: '3 mice'
+            },
+            {
+              input: ['goose', 4],
+              output: '4 geese'
+            },
+            {
+              input: ['ox', 3],
+              output: '3 oxen'
+            },
+            {
+              input: ['bison', 3],
+              output: '3 bison'
+            },
+            {
+              input: ['deer', 2],
+              output: '2 deer'
+            },
+            {
+              input: ['moose', 6],
+              output: '6 moose'
+            },
+            {
+              input: ['sheep', 3],
+              output: '3 sheep'
+            },
+            {
+              input: ['bee', 3],
+              output: '3 bees'
+            },
+            {
+              input: ['butterfly', 3],
+              output: '3 butterflies'
+            },
+            {
+              input: ['salmon', 3],
+              output: '3 salmon(s)'
+            },
+            {
+              input: ['monkey', 1],
+              output: '1 monkey'
+            },
+            {
+              input: ['monkey', 2],
+              output: '2 monkeys'
+            },
+            {
+              input: ['bird', 2],
+              output: '2 birds'
+            },   
+            
           ]
         });
 
