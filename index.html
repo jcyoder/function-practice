@@ -392,23 +392,28 @@
           'Fight Club,1999,791186',
           'Star Wars: Episode V - The Empire Strikes Back,1980,503348'
         ];
-        var splitMovie = {movieName: ' ',
-                          year: 0,
-                          rating: 0};
+        
         var splitResult= [{}];                 
         
-        //create an array of objects that has the name, year and rating separated
+        //create an array of objects that has name, year and rating separated into their own property in the object
         for (var listIndex = 0; listIndex < movieList.length; listIndex++) {
                 var movieStr  = movieList[listIndex].split(',');
                 var i=0;
-                console.log(movieStr[i]);
+                var splitMovie = {movieName: ' ',
+                          year: 0,
+                          rating: 0};
+            
+              //  console.log(movieStr[i]);
                 splitMovie.movieName = movieStr[i];
                 splitMovie.year = movieStr[i+1];
                 splitMovie.rating = movieStr[i+2];
-                console.log(splitMovie);
-                splitResult[listIndex] =  splitMovie;
+             //   console.log(splitMovie);
+                splitResult[listIndex] =  splitMovie;  //add the object to the splitResult array
+                console.log(splitResult[listIndex]);
             }
-        
+        //now we need to sort the list
+        splitResult.sort(function(Obj1, Obj2) {return Obj1.year - Obj2.year});
+        console.log(splitResult);
         function movieParsing(movieList) {
             console.log('MovieParsing called');
             for (var listIndex = 0; listIndex < movieList.length; listIndex++) {
