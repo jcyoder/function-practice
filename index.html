@@ -395,8 +395,9 @@
         
         var splitResult= [{}];                 
         
-        //create an array of objects that has name, year and rating separated into their own property in the object
-        for (var listIndex = 0; listIndex < movieList.length; listIndex++) {
+        function movieParsing(movieList) {
+            //create an array of objects that has name, year and rating separated into their own property in the object
+            for (var listIndex = 0; listIndex < movieList.length; listIndex++) {
                 var movieStr  = movieList[listIndex].split(',');
                 var i=0;
                 var splitMovie = {movieName: ' ',
@@ -411,15 +412,11 @@
                 splitResult[listIndex] =  splitMovie;  //add the object to the splitResult array
                 console.log(splitResult[listIndex]);
             }
-        //now we need to sort the list
-        splitResult.sort(function(Obj1, Obj2) {return Obj1.year - Obj2.year});
-        console.log(splitResult);
-        function movieParsing(movieList) {
-            console.log('MovieParsing called');
-            for (var listIndex = 0; listIndex < movieList.length; listIndex++) {
-                console.log(moveList[listIndex]);   
-            }
-            return 0;
+            //now we need to sort the list
+            splitResult.sort(function(Obj1, Obj2) {return Obj1.year - Obj2.year});
+            console.log(splitResult);   
+            
+            return splitResult;
         }
         
         createExample('Movie Parsing', {
@@ -429,7 +426,54 @@
             "</pre> create a function that splits the values into the title, \
             year, and number of votes and returns a list of movie objects \
             sorted by year.",
-          implementation: movieParsing
+            implementation: movieParsing,
+            validation: [
+                {
+                  input: [movieList],
+                  output: [{ moviename: '12 Angry Men',
+                            year: 1957,
+                            rating: 255846 },
+                      
+                            { moviename: 'The Godfather',
+                            year: 1972,
+                            rating: 732416 },
+                      
+                            { moviename: 'The Godfather: Part II',
+                            year:1974,
+                            rating: 474640},
+                      
+                            { moviename: 'Star Wars: Episode V - The Empire Strikes Back',
+                            year:1980,
+                            rating: 503348 },
+                      
+                            { moviename: 'Schindler\'s List',
+                            year: 1993,
+                            rating: 528900},
+                      
+                            { moviename: 'The Shawshank Redemption',
+                            year: 1994,
+                            rating: 1043071 },
+                      
+                            { moviename: 'Pulp Fiction',
+                            year: 1994,
+                            rating: 806431},
+                      
+                            { moviename: 'Fight Club',
+                            year: 1999,
+                            rating: 791186 },
+                      
+                            { moviename: 'The Lord of the Rings: The Return of the King',
+                            year: 2003,
+                            rating: 738931 },
+                      
+                            { moviename: 'The Dark Knight',
+                            year: 2008,
+                            rating: 1017508 },
+                      ]
+                }
+        ]
+                      
+                      
         });
       });
     </script>
