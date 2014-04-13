@@ -392,7 +392,31 @@
           'Fight Club,1999,791186',
           'Star Wars: Episode V - The Empire Strikes Back,1980,503348'
         ];
-
+        var splitMovie = {movieName: ' ',
+                          year: 0,
+                          rating: 0};
+        var splitResult= [{}];                 
+        
+        //create an array of objects that has the name, year and rating separated
+        for (var listIndex = 0; listIndex < movieList.length; listIndex++) {
+                var movieStr  = movieList[listIndex].split(',');
+                var i=0;
+                console.log(movieStr[i]);
+                splitMovie.movieName = movieStr[i];
+                splitMovie.year = movieStr[i+1];
+                splitMovie.rating = movieStr[i+2];
+                console.log(splitMovie);
+                splitResult[listIndex] =  splitMovie;
+            }
+        
+        function movieParsing(movieList) {
+            console.log('MovieParsing called');
+            for (var listIndex = 0; listIndex < movieList.length; listIndex++) {
+                console.log(moveList[listIndex]);   
+            }
+            return 0;
+        }
+        
         createExample('Movie Parsing', {
           description: "Given the following comma separated list of IMDb top \
             rated movies: <pre>var movieList = " +
@@ -400,7 +424,7 @@
             "</pre> create a function that splits the values into the title, \
             year, and number of votes and returns a list of movie objects \
             sorted by year.",
-          implementation: null
+          implementation: movieParsing
         });
       });
     </script>
