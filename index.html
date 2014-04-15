@@ -400,14 +400,14 @@
             for (var listIndex = 0; listIndex < movieList.length; listIndex++) {
                 var movieStr  = movieList[listIndex].split(',');
                 var i=0;
-                var splitMovie = {movieName: ' ',
+                var splitMovie = {moviename: ' ',
                           year: 0,
                           rating: 0};
             
               //  console.log(movieStr[i]);
-                splitMovie.movieName = movieStr[i];
-                splitMovie.year = movieStr[i+1];
-                splitMovie.rating = movieStr[i+2];
+                splitMovie.moviename = movieStr[i];
+                splitMovie.year = parseInt(movieStr[i+1]);
+                splitMovie.rating = parseInt(movieStr[i+2]);
              //   console.log(splitMovie);
                 splitResult[listIndex] =  splitMovie;  //add the object to the splitResult array
                 console.log(splitResult[listIndex]);
